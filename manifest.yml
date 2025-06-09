@@ -1,12 +1,12 @@
-alpine:
+alpine-3-17:
   vagrant-hyperv:
-    s3_uri: s3://hayeseoin-homelab-resources-images/alpine/vagrant-hyperv/hayeseoin-VAGRANTSLASH-alpine317-hyperv.tar.gz
+    s3_uri: s3://hayeseoin-homelab-resources-images/alpine-3-17/vagrant-hyperv/hayeseoin-VAGRANTSLASH-alpine317-hyperv.tar.gz
 amazon-linux-2023:
   vagrant-hyperv:
     s3_uri: s3://hayeseoin-homelab-resources-images/amazon-linux-2023/vagrant-hyperv/hayeseoin-VAGRANTSLASH-al2023-hyperv.tar.gz
-debian:
+debian-12:
   vagrant-hyperv:
-    s3_uri: s3://hayeseoin-homelab-resources-images/debian/vagrant-hyperv/hayeseoin-VAGRANTSLASH-debian12-hyperv.tar.gz
-fedora:
+    s3_uri: s3://hayeseoin-homelab-resources-images/debian-12/vagrant-hyperv/hayeseoin-VAGRANTSLASH-debian12-hyperv.tar.gz
+fedora-cloud-42:
   vagrant-hyperv:
-    s3_uri: s3://hayeseoin-homelab-resources-images/fedora/vagrant-hyperv/hayeseoin-VAGRANTSLASH-fedora-cloud-42-hyperv.tar.gz
+    s3_uri: s3://hayeseoin-homelab-resources-images/fedora-cloud-42/vagrant-hyperv/hayeseoin-VAGRANTSLASH-fedora-cloud-42-hyperv.tar.gz
