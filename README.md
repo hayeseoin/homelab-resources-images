@@ -1,9 +1,9 @@
 # Homelab Images
 Manifest of my default homelab base images, and procedures for creating them.
 
-## ['Manifest`](manifest.yml)
+## Manifest
 
-Manifest of images can be found at [`manifest.yml](manifest.yml)
+Images are stored on S3 in a private bucket. Manifest of images can be found at here: [**`manifest.yml`**](manifest.yml)
 
 ## Generating seed.iso Files
 Some of these images require cloud-init. To generate a seed.iso file, run this command in the same directory as the user-data and meta-data.
