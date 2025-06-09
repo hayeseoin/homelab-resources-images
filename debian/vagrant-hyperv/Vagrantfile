@@ -1,7 +1,18 @@
 Vagrant.configure("2") do |config|
   config.vm.network "public_network", bridge: "Default Switch"
   config.vm.synced_folder ".", "/vagrant", disabled: true
+
   config.ssh.insert_key = false
+  def provision_template()
+    <<-SHELL
+      apt update
+      apt-mark hold postfix # prevent postfix from blocking apt upgrade
+      apt upgrade -y
+      apt install -y ansible
+      echo "alias ll='ls -l'" >> /etc/profile
+      echo "alias python='python3'" >> /etc/profile
+    SHELL
+  end
 
   # Setup file for the VMs
   vm_settings = [ 
@@ -26,6 +37,7 @@ Vagrant.configure("2") do |config|
         h.cpus = vm[:cpus]
         h.enable_checkpoints = vm[:enable_snapshots]
       end
+    node.vm.provision "shell", inline: provision_template()
     end
   end
 end

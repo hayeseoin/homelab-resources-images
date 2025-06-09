@@ -30,5 +30,5 @@ vagrant package --output alpine317-hyperv.box
 ```
 Add the new box to vagrant (use `--force` flag at end if nescessary).
 ```ps
-vagrant box add ./alpine317-hyperv.box --name hayeseoin/alpine-hyperv
+vagrant box add ./alpine317-hyperv.box --name hayeseoin/alpine317-hyperv
 ```
