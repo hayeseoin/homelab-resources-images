@@ -1,0 +1,31 @@
+Vagrant.configure("2") do |config|
+  config.vm.network "public_network", bridge: "Default Switch"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.ssh.insert_key = false
+
+  # Setup file for the VMs
+  vm_settings = [ 
+    {   
+      name: "debian-bookworm",
+      box: "generic/debian12",
+      enable_snapshots: false,
+      memory: 1024, 
+      cpus: 1
+    }
+  ]
+  
+  # VM config block - consumes vm_settings from above
+  vm_settings.each do |vm|
+    config.vm.define vm[:name] do |node|
+      node.vm.box = vm[:box]
+      node.vm.hostname = vm[:name]
+
+      node.vm.provider "hyperv" do |h|
+        h.vmname = vm[:name]
+        h.memory = vm[:memory]
+        h.cpus = vm[:cpus]
+        h.enable_checkpoints = vm[:enable_snapshots]
+      end
+    end
+  end
+end
