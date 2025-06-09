@@ -4,7 +4,7 @@ These steps create a Vagrant box for Hyper-V of Fedroa Cloud 42. The user data a
 
 ## Requirements
 - The `Fedora-Cloud-Base-Azure-42-1.1.x86_64.vhdfixed.xz` image
-- The [`vagrant-seed.iso`](vagrant-seed.iso) file for adding the Vagrant user/key and bootstrapping the box
+- Use the `user-data` and `meta-data` in this repo to generate a `seed.iso` file for cloud-init. Script: [**'generate-seed-iso.sh`**](generate-seed-iso.sh)
 - A known working directory e.g. `C:\Users\eoaha\dev\hyperv\vagrant-boxing\`
 
 ## Steps
@@ -14,6 +14,8 @@ Download the image to your working directory.
 
 > Note: It would be good to keep a temporary backup of the base image, in case you make a mistake and need to revert. 
 
+Generate and `seed.iso` file with [**'this script`**](generate-seed-iso.sh) and add it to the working directory.
+
 Unarchive and rename the image. Hyper-V requires the image to have extension `.vhd`. 
 
 ```sh
@@ -22,8 +24,6 @@ mv Fedora-Cloud-Base-Azure-42-1.1.x86_64.vhdfixed Fedora-Cloud-Base-Azure-42-1.1
 ```
 
 ### 2. Create Hyper-V VM
-Create a new Generation 1 VM for Hyper-V using the above iamge and the [`vagrant-seed.iso`](vagrant-seed.iso)
-
 This Powershell command will create a 1GB 1 core VM using the default switch
 ```ps
 New-VM -Name "fedora-cloud-42" -Generation 1 -MemoryStartupBytes 1GB -SwitchName "Default Switch"
@@ -49,7 +49,7 @@ Shut down the VM. **Important: REMOVE the DVD drive.**
 Once the VM is shut down and the DVD drive is removed export the VM to your working directory
 
 ```ps
-Export-VM -Name "Your-VM-Name" -Path "C:\Users\eoaha\dev\hyperv\vagrant-boxing\"
+Export-VM -Name "fedora-cloud-42" -Path "C:\Users\eoaha\dev\hyperv\vagrant-boxing\"
 ```
 This will export the VM in the following structure to `C:\Users\eoaha\dev\hyperv\vagrant-boxing\fedora-cloud-42`
 

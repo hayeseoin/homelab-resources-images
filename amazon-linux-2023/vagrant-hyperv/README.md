@@ -4,13 +4,15 @@ These steps create a Vagrant box for Hyper-V of Fedroa Cloud 42. The user data a
 
 ## Requirements
 - The `al2023-hyperv-2023.7.20250527.1-kernel-6.1-x86_64.xfs.gpt.vhdx.zip` image
-- The [`vagrant-seed.iso`](../seed-iso/vagrant/amazon-linux-2023/vagrant-seed.iso) file for adding the Vagrant user/key and bootstrapping the box
+- Use the `user-data` and `meta-data` in this repo to generate a `seed.iso` file for cloud-init. Script: [**'generate-seed-iso.sh`**](generate-seed-iso.sh)
 - A known working directory e.g. `C:\Users\eoaha\dev\hyperv\vagrant-boxing\`
 
 ## Steps
 
-### 1. Unarchive the image
+### 1. Prepare the image
 Download the image to your working directory.
+
+Generate and `seed.iso` file with [**'this script`**](generate-seed-iso.sh) and add it to the working directory.
 
 > Note: It would be good to keep a temporary backup of the base image, in case you make a mistake and need to revert. 
 
@@ -21,8 +23,6 @@ gzip -d al2023-hyperv-2023.7.20250527.1-kernel-6.1-x86_64.xfs.gpt.vhdx.zip
 ```
 
 ### 2. Create Hyper-V VM
-Create a new Generation 2 VM for Hyper-V using the above iamge and the [`vagrant-seed.iso] 
-
 This Powershell command will create a 1GB 1 core VM using the default switch
 ```ps
 New-VM -Name "amazon-linux-2023" -Generation 2 -MemoryStartupBytes 1GB -SwitchName "Default Switch"
@@ -33,7 +33,7 @@ Configure as follows:
 - Processors: 1
 - SCSI Controller: 
     - Hard drive: `C:\Users\eoaha\dev\hyperv\vagrant-boxing\al2023-hyperv-2023.7.20250527.1-kernel-6.1-x86_64.xfs.gpt.vhdx\al2023-hyperv-2023.7.20250527.1-kernel-6.1-x86_64.xfs.gpt.vhdx`
-    - DVD drive: `"C:\Users\eoaha\dev\hyperv\vagrant-boxing\seed.iso"`
+    - DVD drive: `C:\Users\eoaha\dev\hyperv\vagrant-boxing\seed.iso`
 - Network Adapter: Default Switch
 - Checkpoints: Disabled 
 
