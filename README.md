@@ -1,14 +1,12 @@
 # Homelab Images
-Manifest of my default homelab base images, and procedures for creating them.
+This repository tracks the VM templates and Vagrant boxes used across my homelab environments.
+
+Additional documentation can be found here: [`docs/`](docs/)
 
 ## Manifest
+Image metadata and paths:: [**`manifest.yml`**](manifest.yml)
 
-Images are stored on S3 in a private bucket. Manifest of images can be found at here: [**`manifest.yml`**](manifest.yml)
+## Related Resources
 
-## Generating seed.iso Files
-Some of these images require cloud-init. To generate a seed.iso file, run this command in the same directory as the user-data and meta-data.
-
-```sh
-genisoimage -output seed.iso -volid cidata -joliet -rock user-data meta-data
-```
-A `generate-seed-iso.sh` script will be included anywhere it's needed.
+### [`Vagrant Labs`](https://github.com/hayeseoin/vagrant-labs)
+Reusable lab environments for exploring infrastructure tooling using Vagrant and Hyper-V.
