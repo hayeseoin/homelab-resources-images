@@ -1,15 +1,12 @@
 # Homelab Images
 This repository tracks the VM templates and Vagrant boxes used across my homelab environments.
 
-
 ## Manifest
 Image metadata and paths: [**`manifest.yml`**](https://raw.githubusercontent.com/hayeseoin/homelab-resources-images/refs/heads/main/manifest.yml)
 
 ## Additional Documentation
 
 Additional documentation can be found here: [**`docs/`**](docs/)
-
-
 
 ## Related Resources
 
