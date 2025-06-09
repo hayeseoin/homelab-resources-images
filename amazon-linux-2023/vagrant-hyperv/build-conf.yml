@@ -1,0 +1,2 @@
+type: cloud-config
+base_image: al2023-hyperv-2023.7.20250527.1-kernel-6.1-x86_64.xfs.gpt.vhdx.zip

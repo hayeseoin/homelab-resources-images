@@ -1,0 +1,2 @@
+type: cloud-config
+base_image: Fedora-Cloud-Base-Azure-42-1.1.x86_64.vhdfixed.xz
